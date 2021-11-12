@@ -11,6 +11,12 @@
             table {
                 border-collapse: collapse;
             }
+
+            div.inline { float:left; }
+            .clearBoth { clear:both; }
+
+            #weather { margin-left: 50px; }
+
         </style>
     </head>
     <body>
@@ -28,14 +34,17 @@
             }
         ?> 
 
-        <div id="container">
+        <div class="inline" id="container">
             <table></table> 
         </div>
+
+        <div class="inline" id="weather"></div>
+        <br class="clearBoth" />
 
         <div id="map_title"></div>
         <div id="map" style="height: 354px; width:650px;"></div>
 
-        <div id="weather"></div>      
+              
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBF31XUBKGYHkcxejmGQlNAh3L3wFp-n3g&callback=initMap&v=weekly"></script>
@@ -60,16 +69,18 @@
             for(var i in res){
                 str += '<tr>';
                 var date = new Date(res[i].time*1000);
-
+                var country = "";
                 loc.push([res[i].lat, res[i].lng]);
+
+                if(res[i].code != "??")
+                    country = res[i].country + "(" + res[i].code + ")" ;
                 if(i != 6)
-                    str += '<td>' + count++ + '</td>' + '<td>' + date + '</td>' + '<td>' + res[i].lat.toFixed(4) +', ' + res[i].lng.toFixed(4) + '</td>'+ '<td>' + res[i].code + '</td></tr>';
+                    str += '<td>' + count++ + '</td>' + '<td>' + date + '</td>' + '<td>' + res[i].lat.toFixed(4) +', ' + res[i].lng.toFixed(4) + '</td>'+ '<td>' + country + '</td></tr>';
                 else
-                    str += '<td><strong>' + count++ + '</strong></td>' + '<td><strong>' + date + '</strong></td>' + '<td><strong>' + res[i].lat.toFixed(4) +', ' + res[i].lng.toFixed(4) + '</strong></td>'+ '<td><strong>' + res[i].code + '</strong></td></tr>';
+                    str += '<td><strong>' + count++ + '</strong></td>' + '<td><strong>' + date + '</strong></td>' + '<td><strong>' + res[i].lat.toFixed(4) +', ' + res[i].lng.toFixed(4) + '</strong></td>'+ '<td><strong>' + country + "</strong></td></tr>";
             } 
             
             str += '</table>';
-
             document.getElementById("container").innerHTML = str;
 
             function initMap() {
@@ -113,9 +124,9 @@
                 for(var i in obj)
                     info.push(obj[i]);
                     
-                document.getElementById("weather").innerHTML = "<h4>Weather at location ("+loc[6][0].toFixed(4)+", "+loc[6][1].toFixed(4) +")</h4>"+ 
+                document.getElementById("weather").innerHTML = "<h4>Weather at location ("+loc[6][0].toFixed(4)+", "+loc[6][1].toFixed(4) +") - "+res[6].country+"</h4>"+ 
                                                                     "<p>Weather: " + info[1][0].main + " ("+ info[1][0].description + ") <br>"+
-                                                                    "Temperature: "+ info[3].temp +"K<br>"+
+                                                                    "Temperature: "+ (info[3].temp-273.15).toFixed(2) +"°C<br>"+
                                                                     "Humidity: "+ info[3].humidity + "</p>";
 
             });
