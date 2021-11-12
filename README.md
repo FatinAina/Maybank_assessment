@@ -2,7 +2,7 @@
 
 How to Run Code
 
-1. Download Maybank_assessment
+1. Download Maybank_assessment zip file.
 2. Create a folder called php or similar in your www folder.
 3. Extract the Maybank_assessment files into it.
 4. Run your PHP environment(Laragon/XAMPP/WAMP)
