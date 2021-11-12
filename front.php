@@ -3,7 +3,6 @@
     <head>
         <meta charset="utf-8"/>
         <title>ISS</title>
-        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
         <style>
             table, td, th {
                 border: 1px solid black;
@@ -36,11 +35,7 @@
         <div id="map_title"></div>
         <div id="map" style="height: 354px; width:650px;"></div>
 
-        <div id="weather"></div>
-
-        <!-- <button id = "getIt" onclick = "gettingJSON()">Get JSON</button> -->
-
-        
+        <div id="weather"></div>      
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBF31XUBKGYHkcxejmGQlNAh3L3wFp-n3g&callback=initMap&v=weekly"></script>
@@ -124,6 +119,7 @@
                                                                     "Humidity: "+ info[3].humidity + "</p>";
 
             });
+            
 
         </script>     
     </body> 
