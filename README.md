@@ -10,8 +10,8 @@ How to Run Code
 
 Extensions implemented
 
-1. Extension 1 (Front End - front.php(path plot on Google Map))
-2. Extension 2 (Back End -back.php)
-3. Extension 3 (Weather at the ISS location)
+1. Extension 1 (Front End - front.php(path plot on Google Map)) *click 'OK' on the popup box on map
+3. Extension 2 (Back End -back.php)
+4. Extension 3 (Weather at the ISS location)
 
 Name: Fatin Aina binti Abdullah
